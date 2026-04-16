@@ -16,9 +16,8 @@ rule block-claude46-opus-excessive-costs {
   enabled true
   priority 95
   severity warning
-  ASK execution
+  LOG execution
   IF input.agent_model CONTAINS "claude-4.6-opus" AND command CONTAINS "ls -la"
   OR input.agent_model CONTAINS "claude-4.6-opus" AND command CONTAINS "pwd"
   MESSAGE "Claude 4.6 Opus: Using Opus for simple discovery commands (ls, pwd) incurs massive API costs ('Opus Tax'). Use Sonnet or Haiku instead."
-  PROMPT "You are using Opus 4.6 for a basic discovery command. Are you sure?"
 }
